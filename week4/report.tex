@@ -1,0 +1,130 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    backgroundcolor=\color{white},
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true
+}
+
+\title{List Class Testing Program}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+This document aims to explain the testing program for the custom list class \texttt{List}. The program compares the custom implementation with the standard library \texttt{std::list} to ensure correctness and functionality.
+
+\section{Code Overview}
+Below is the main structure of the testing program:
+
+\begin{lstlisting}[language=C++]
+#include "List.h"
+#include <iostream>
+#include <list>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::list;
+\end{lstlisting}
+
+First, the custom header file \texttt{List.h} and necessary standard library headers are included. The commonly used features from the \texttt{std} namespace are utilized.
+
+\section{Print Function}
+A template function \texttt{print} is defined to output the size and elements of the list:
+
+\begin{lstlisting}[language=C++]
+template <typename T> void print(T &a) {
+  cout << "size: " << a.size() << "  ";
+  cout << "elements: ";
+  for (auto v : a) {
+    cout << v << " ";
+  }
+  cout << endl;
+}
+\end{lstlisting}
+
+This function takes a list object and prints its size and all elements.
+
+\section{Main Program}
+The main part of the program is as follows:
+
+\begin{lstlisting}[language=C++]
+int main() {
+  List<int> lst = {1, 2, 3, 4, 5};
+  list<int> lst2 = {1, 2, 3, 4, 5};
+\end{lstlisting}
+
+First, a custom list \texttt{lst} and a standard library list \texttt{lst2} are created, both initialized with the same elements.
+
+\subsection{Construction Test}
+\begin{lstlisting}[language=C++]
+cout << "test construct" << endl;
+print(lst);
+print(lst2);
+\end{lstlisting}
+
+Prints the initial state of both lists.
+
+\subsection{Front and Back Element Test}
+\begin{lstlisting}[language=C++]
+cout << "test front and back" << endl;
+cout << lst.front() << " " << lst.back() << endl;
+cout << lst2.front() << " " << lst2.back() << endl;
+\end{lstlisting}
+
+Verifies the first and last elements of both the custom list and the standard library list.
+
+\subsection{Insert and Delete Test}
+\begin{lstlisting}[language=C++]
+cout << "test pushback, pushfront, popfront, and popback" << endl;
+lst.push_back(10);
+lst2.push_back(10);
+print(lst);
+print(lst2);
+\end{lstlisting}
+
+Performs insert and delete operations on both lists, printing the results for comparison.
+
+\subsection{Iterator Test}
+\begin{lstlisting}[language=C++]
+auto it = lst.begin();
+auto it2 = lst2.begin();
+++it;
+++it2;
+cout << "test iterator++: " << endl << *it << " " << *it2 << endl;
+\end{lstlisting}
+
+Tests the increment and decrement operations of the iterators to ensure they work correctly in both lists.
+
+\subsection{Copy and Move Semantics Test}
+\begin{lstlisting}[language=C++]
+cout << "test copy" << endl;
+auto lst3 = lst;
+auto lst4 = lst2;
+\end{lstlisting}
+
+Verifies the copy and move operations of the custom list and the standard library list.
+
+\subsection{Clear Test}
+\begin{lstlisting}[language=C++]
+lst.clear();
+lst2.clear();
+cout << "test clear" << endl;
+print(lst);
+print(lst2);
+\end{lstlisting}
+
+Tests the functionality of clearing the lists to ensure they can correctly handle the removal of elements.
+
+\section{Conclusion}
+This testing program thoroughly tests various functionalities of the custom list class \texttt{List} and compares them with \texttt{std::list}. These tests verify the correctness and reliability of the custom implementation.
+
+\end{document}
+
