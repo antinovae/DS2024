@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{AVL Tree Deletion Algorithm}
+\author{Student Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The AVL tree is a balanced binary search tree where the heights of two child subtrees of any node differs by at most one. If the height difference become more than one, the tree needs to be rebalanced. This report will explain the algorithm for deleting node from an AVL tree without copying any node, just by changing pointers. 
+
+\section{AVL Tree Structure}
+An AVL tree have nodes with the following properties:
+\begin{itemize}
+    \item \textbf{element}: the value of the node,
+    \item \textbf{left}: a pointer to the left child,
+    \item \textbf{right}: a pointer to the right child,
+    \item \textbf{height}: the height of the node.
+\end{itemize}
+
+\section{Deletion Algorithm}
+The deletion algorithm in an AVL tree has some steps:
+\begin{enumerate}
+    \item First, find the node which need to be delete.
+    \item If the node has no children or only one child, we just remove it and move its child (if any) up.
+    \item If the node has two children, we find the smallest node in right subtree, swap it with the node to be deleted, and then remove the node.
+    \item After deletion, we must update the heights of nodes and rebalance the tree if necessary.
+\end{enumerate}
+
+\subsection{Finding the Node}
+We search for the node to delete by comparing the value of node with the element to delete. If the value is smaller, we go left, otherwise go right.
+
+\subsection{Removing the Node}
+Once the node is found:
+\begin{itemize}
+    \item If the node has no children, it is just deleted.
+    \item If it has one child, we replace the node with its child.
+    \item If it has two children, we find the minimum node in right subtree, remove it from right subtree, and replace the node to be deleted with this minimum node.
+\end{itemize}
+
+\subsection{Balancing the Tree}
+After deletion, we need to check balance factor of each node and rebalance it if necessary by performing rotations (single or double).
+
+\subsection{Complexity}
+The time complexity of AVL tree deletion is \( O(\log n) \), where \( n \) is the number of nodes in the tree, because we always work on a balanced tree.
+
+\section{Conclusion}
+The deletion algorithm for AVL tree is efficient and keep the tree balanced after each delete operation. It relies on rotations for rebalancing, and ensure that the tree remains efficient for future operations.
+
+\end{document}
