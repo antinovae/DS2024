@@ -10,6 +10,7 @@
  */
 
 #include <iostream>
+#include <cassert>
 
 /// 临时性的异常类，用于表示树为空的异常
 class UnderflowException { };
@@ -426,7 +427,7 @@ private:
             mn->left=t->left;
             mn->right=t->right;
             delete t;
-            return mn.
+            return mn;
         } else {
             BinaryNode *oldNode = t;
             if(t->left!=nullptr){
@@ -437,7 +438,7 @@ private:
             else {
                 auto mn=t->right;
                 delete t;
-                return mn.
+                return mn;
             }
         }
     }
