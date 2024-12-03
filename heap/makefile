@@ -4,10 +4,10 @@ CXX = g++
 CXXFLAGS = -std=c++11 -O2 -Wall
 
 # 输出的可执行文件名称
-TARGET = myheap
+TARGET = test
 
 # 源文件和目标文件
-SRCS = myheap.cpp
+SRCS = test.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # 默认目标

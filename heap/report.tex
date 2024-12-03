@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\title{Heap Sort Using STL Heap Tools in C++}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Heap Sort Algorithm}
+The basic steps of heap sort are as follows:
+
+\begin{itemize}
+    \item First, we build a max-heap from the input array.
+    \item Then, we repeatedly swap the root element (the maximum element) with the last element of the heap and reduce the heap size by 1.
+    \item After each swap, we restore the heap property by calling \texttt{pop\_heap} to re-adjust the heap.
+    \item We repeat this process until the heap size becomes 1, and the array is sorted.
+\end{itemize}
+
+In a max-heap, for every node $i$, its left child at $2i + 1$ and its right child at $2i + 2$ are smaller than or equal to it.
+
+\section{Implementation of Heap Sort}
+Heap sort can be broken down into two phases: building the heap and sorting the heap.
+
+\subsection{Building the Heap}
+The \texttt{make\_heap} function in STL can be used to convert an unsorted array into a heap. This function builds a max-heap by default using the standard comparison operator (\texttt{operator<}).
+
+\subsection{Sorting the Heap}
+The \texttt{pop\_heap} function can be used to repeatedly pop the top element of the heap (the maximum element) and place it at the end of the array. After each pop, the heap is re-adjusted by calling \texttt{pop\_heap} again.
+
+\end{document}
