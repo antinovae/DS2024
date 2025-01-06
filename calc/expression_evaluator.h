@@ -106,6 +106,7 @@ double calculate(string &a){
             }
             double a=args.back();args.pop_back();
             double b=args.back();args.pop_back();
+            
             if(v.x=="+"){
                 args.push_back(a+b);
             }
@@ -116,7 +117,7 @@ double calculate(string &a){
                 args.push_back(a*b);
             }
             else if(v.x=="/"){
-                if(a<eps){//check /0
+                if(fabs(a)<eps){//check /0
                     cout<<"Invalid Expression"<<endl;
                     return 1e9;
                 }
