@@ -110,7 +110,7 @@ double calculate(string &a){
                 args.push_back(a+b);
             }
             else if(v.x=="-"){
-                args.push_back(a-b);
+                args.push_back(b-a);
             }
             else if(v.x=="*"){
                 args.push_back(a*b);
@@ -120,7 +120,7 @@ double calculate(string &a){
                     cout<<"Invalid Expression"<<endl;
                     return 1e9;
                 }
-                args.push_back(a/b);//translate / into *
+                args.push_back(b/a);//translate / into *
             }
         }
     }
